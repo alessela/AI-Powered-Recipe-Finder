@@ -1,20 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Home/Home';
+import appStyles from './AppStyles';
 
 function App() {
+  const styles = appStyles()
+
   return (
-    <div className="App">
-      return (
+    <div className={styles.App}>
         <BrowserRouter>
-          <div>
-            <h1>AI Recipe Finder</h1>
-            <Routes>
-              <Route path="/" />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+          </Routes>
         </BrowserRouter>
-      )
     </div>
   );
 }
