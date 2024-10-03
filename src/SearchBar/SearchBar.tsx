@@ -2,17 +2,18 @@ import TextField from "@mui/material/TextField";
 import searchBarStyles from "./SearchBarStyles";
 import { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
+import IconButton from "@mui/material/IconButton";
+import { Link } from "react-router-dom";
 
-const SearchBar = ({ value }: { value: string }) => {
+const SearchBar = ({ searched }: { searched: string }) => {
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
-            console.log('Enter key pressed!');
+            window.location.href=`search/${encodeURI(toSearch)}`
         }
     }
 
-    const [newValue, setValue] = useState(value);
-
+    const [toSearch, setToSearch] = useState(searched);
     const styles = searchBarStyles();
 
     return (
@@ -20,11 +21,16 @@ const SearchBar = ({ value }: { value: string }) => {
             <TextField className={styles.searchInput}
                        label='What do you feel like eating?'
                        variant="outlined"
-                       value={newValue}
-                       onChange={(e) => setValue(e.target.value)}
+                       value={toSearch}
+                       onChange={(e) => setToSearch(e.target.value)}
                        onKeyDown={handleKeyDown}
                 />
-            <SearchIcon fontSize="large" className={styles.searchButton}/>
+            <Link to={`search/${encodeURI(toSearch)}`}>
+                <IconButton className={styles.searchButton}>
+                    <SearchIcon fontSize="large"/>
+                </IconButton>
+            </Link>
+            
         </div>
     )
 }

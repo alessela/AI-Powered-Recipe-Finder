@@ -6,7 +6,7 @@ const Home = () => {
 
     return (
         <div className={styles.homeScreen}>
-            <SearchBar value=""/>
+            <SearchBar searched=""/>
             <h1>Favorites</h1>
         </div>
     )

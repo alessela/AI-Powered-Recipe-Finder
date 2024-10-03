@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 const searchBarStyles = createUseStyles({
     searchBar: {
         marginTop: 80,
-        position: 'relative'
+        position: 'relative',
     },
     searchInput: {
         width: '100%',
@@ -13,8 +13,8 @@ const searchBarStyles = createUseStyles({
     },
     searchButton: {
         position: 'absolute',
-        right: 5,
-        top: 10
+        top: 3,
+        right: 0
     }
 })
 
