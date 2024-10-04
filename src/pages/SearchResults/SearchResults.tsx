@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import searchResultsStyles from "./SearchResultsStyles";
-import SearchBar from "../SearchBar/SearchBar";
-import Recipe from "../Recipe/Recipe";
-import RecipeCard from "../Recipe/RecipeCard";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import Recipe from "../../components/Recipe/Recipe";
+import RecipeCard from "../../components/Recipe/RecipeCard";
 
 const SearchResults = () => {
     const { searched } = useParams()

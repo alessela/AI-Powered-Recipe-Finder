@@ -5,13 +5,15 @@ import recipeCardStyles from "./RecipeCardStyles";
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 const RecipeCard = (recipe: Recipe) => {
     const styles = recipeCardStyles();
     const [_recipe, setRecipe] = useState(recipe);
 
-    const handleFavoriteChange = () => setRecipe({..._recipe, favorite: !_recipe.favorite})
+    const handleFavoriteChange = () => {
+        setRecipe({..._recipe, favorite: !_recipe.favorite});
+    }
     
     return (
         <Card className={styles.recipeCard}>
