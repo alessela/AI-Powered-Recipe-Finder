@@ -6,6 +6,7 @@ import RecipeCard from "../../components/Recipe/RecipeCard";
 import generateRecipes from "../../openai/generateRecipes";
 import { useEffect, useState } from "react";
 import { OrbitProgress } from "react-loading-indicators";
+import { Button } from "@mui/material";
 
 const SearchResults = () => {
     const { searched } = useParams()
@@ -13,13 +14,13 @@ const SearchResults = () => {
     const [recipes, setRecipes] = useState<Recipe[]>([])
     const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
-        const fetchRecipes = async () => {
-            setLoading(true)
-            await generateRecipes(searched!).then(setRecipes);
-            setLoading(false)
-        }
+    const fetchRecipes = async () => {
+        setLoading(true)
+        await generateRecipes(searched!).then(setRecipes);
+        setLoading(false)
+    }
 
+    useEffect(() => {
         fetchRecipes()
     }, [])
 
@@ -28,13 +29,20 @@ const SearchResults = () => {
             <SearchBar searched={searched!}/>
             <h1>Suggested recipes</h1>
             {
-                loading ? <OrbitProgress color="green" size="medium" />
-                : recipes.map((recipe) => (<RecipeCard key={recipe.title}
+                loading ? <OrbitProgress color="green" size="medium" /> :
+                [
+                    recipes.map((recipe) => (<RecipeCard key={recipe.title}
                                                        title={recipe.title}
                                                        duration={recipe.duration}
                                                        ingredients={recipe.ingredients}
                                                        instructions={recipe.instructions}
-                                        />))
+                                        />)),
+                    <Button variant="contained"
+                            className={styles.anotherRecipesButton}
+                            onClick={() => fetchRecipes()}
+                            >I don't like these
+                    </Button>
+                ]
             }
         </div>
     )

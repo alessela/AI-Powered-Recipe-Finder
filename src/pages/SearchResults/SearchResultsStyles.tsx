@@ -6,6 +6,9 @@ const searchResultsStyles = createUseStyles({
         '@media (max-width: 400px)': {
             width: '100vw'
         }
+    },
+    anotherRecipesButton: {
+        margin: 16
     }
 })
 
