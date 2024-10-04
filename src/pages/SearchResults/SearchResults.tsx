@@ -31,12 +31,15 @@ const SearchResults = () => {
             {
                 loading ? <OrbitProgress color="green" size="medium" /> :
                 [
-                    recipes.map((recipe) => (<RecipeCard key={recipe.title}
-                                                       title={recipe.title}
-                                                       duration={recipe.duration}
-                                                       ingredients={recipe.ingredients}
-                                                       instructions={recipe.instructions}
-                                        />)),
+                    <div className={styles.recipeList}>
+                        { recipes.map((recipe) => (
+                            <RecipeCard key={recipe.title}
+                                        title={recipe.title}
+                                        duration={recipe.duration}
+                                        ingredients={recipe.ingredients}
+                                        instructions={recipe.instructions}
+                                        />)) }
+                    </div>,
                     <Button variant="contained"
                             className={styles.anotherRecipesButton}
                             onClick={() => fetchRecipes()}

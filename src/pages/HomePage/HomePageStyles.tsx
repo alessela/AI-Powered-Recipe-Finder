@@ -1,7 +1,7 @@
 import { createUseStyles } from "react-jss";
 
-const searchResultsStyles = createUseStyles({
-    searchResultsScreen: {
+const homePageStyles = createUseStyles({
+    homeScreen: {
         display: 'flex',
         flexDirection: 'column',
         width: 400,
@@ -13,10 +13,7 @@ const searchResultsStyles = createUseStyles({
     recipeList: {
         overflowY: 'auto',
         flexGrow: 1
-    },
-    anotherRecipesButton: {
-        margin: 16
     }
 })
 
-export default searchResultsStyles;
+export default homePageStyles;
