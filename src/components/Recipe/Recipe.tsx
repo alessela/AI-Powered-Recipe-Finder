@@ -1,18 +1,8 @@
 class Recipe {
-    title: string;
-    duration: number;
-    ingredients: Array<string>;
-    instructions: Array<string>;
-
-    public constructor(title: string, duration: number,
-                       ingredients: Array<string>,
-                       instructions: Array<string>) {
-        
-        this.title = title
-        this.duration = duration
-        this.ingredients = ingredients
-        this.instructions = instructions
-    }
+    title: string | undefined;
+    duration: number | undefined;
+    ingredients: Array<string> | undefined;
+    instructions: Array<string> | undefined;
 }
 
 export default Recipe;

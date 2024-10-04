@@ -7,6 +7,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addItem, removeItem } from "../../redux/slices/favoritesSlice";
+import { Link } from "react-router-dom";
 
 const RecipeCard = (recipe: Recipe) => {
     const styles = recipeCardStyles();
@@ -25,8 +26,10 @@ const RecipeCard = (recipe: Recipe) => {
                 title="imag"
             />
             <CardContent className={styles.recipeCardContent}>
-                <Typography variant="body2"><b>{recipe.title}</b></Typography>
-                <Typography variant="body2">{recipe.duration}</Typography>
+                <Link to='/details' state={recipe}>
+                    <Typography variant="body2"><b>{recipe.title}</b></Typography>
+                </Link>
+                <Typography variant="body2">{recipe.duration} minutes</Typography>
             </CardContent>
             <CardActions>
                 <IconButton onClick={handleFavoriteClick}>
@@ -34,6 +37,7 @@ const RecipeCard = (recipe: Recipe) => {
                 </IconButton>
             </CardActions>
         </Card>
+        
     )
 }
 

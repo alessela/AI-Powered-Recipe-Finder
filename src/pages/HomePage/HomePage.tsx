@@ -22,7 +22,6 @@ const HomePage = () => {
                     />))
             }
             </div>
-            
         </div>
     )
 }

@@ -6,11 +6,11 @@ function App() {
   const styles = appStyles()
 
   return (
-    <div className={styles.App}>
-      <div>
+    <div >
         <Header />
-        <AppRouter />
-      </div>
+        <div className={styles.App}>
+          <AppRouter />
+        </div>
     </div>
   );
 }
