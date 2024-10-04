@@ -3,21 +3,12 @@
 import Recipe from "./Recipe"
 import recipeCardStyles from "./RecipeCardStyles";
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography } from "@mui/material";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { addItem, removeItem } from "../../redux/slices/favoritesSlice";
+
 import { Link } from "react-router-dom";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 const RecipeCard = (recipe: Recipe) => {
     const styles = recipeCardStyles();
-    const dispatch = useAppDispatch();
-    const favorites = useAppSelector((state) => state.favoriteRecipes.items);
-    const isFavorite = favorites.some((item) => item.title === recipe.title)
-
-    const handleFavoriteClick = () => {
-        isFavorite ? dispatch(removeItem(recipe)) : dispatch(addItem(recipe));
-    }
     
     return (
         <Card className={styles.recipeCard}>
@@ -32,9 +23,10 @@ const RecipeCard = (recipe: Recipe) => {
                 <Typography variant="body2">{recipe.duration} minutes</Typography>
             </CardContent>
             <CardActions>
-                <IconButton onClick={handleFavoriteClick}>
-                    { isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon /> }
-                </IconButton>
+                <FavoriteButton title={recipe.title}
+                                duration={recipe.duration}
+                                ingredients={recipe.ingredients}
+                                instructions={recipe.instructions} />
             </CardActions>
         </Card>
         

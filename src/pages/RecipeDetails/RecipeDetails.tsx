@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import Recipe from "../../components/Recipe/Recipe";
 import recipeDetailsStyles from "./RecipeDetailsStyle";
 import { Typography } from "@mui/material";
+import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
 
 const RecipeDetails = () => {
     const location = useLocation()
@@ -13,8 +14,16 @@ const RecipeDetails = () => {
             <div className={styles.leftSection}>
                 <img src="https://www.allrecipes.com/thmb/8pkbFP258H24axyBlRbGtWS-Vnk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/24771-basic-mashed-potatoes-mfs318-ed832ab37551471cba0997410217d4c5.jpg"
                      className={styles.recipeImage}/>
-                <h1>{recipe.title}</h1>
-                <Typography variant="body1">{recipe.duration} minutes</Typography>
+                <div className={styles.recipeInfo}>
+                    <div className={styles.recipeTitleAndDuration}>
+                        <h1 className={styles.recipeTitle}>{recipe.title}</h1>
+                        <Typography variant="body1">{recipe.duration} minutes</Typography>
+                    </div>
+                    <FavoriteButton title={recipe.title}
+                                    duration={recipe.duration}
+                                    ingredients={recipe.ingredients}
+                                    instructions={recipe.instructions} />
+                </div>
             </div>
             <div className={styles.rightSection}>
                 <p>Ingredients:</p>

@@ -40,6 +40,7 @@ const SearchResults = () => {
                                         instructions={recipe.instructions}
                                         />)) }
                     </div>,
+
                     <Button variant="contained"
                             className={styles.anotherRecipesButton}
                             onClick={() => fetchRecipes()}

@@ -17,6 +17,15 @@ const recipeDetailsStyles = createUseStyles({
     leftSection: {
         maxWidth: 400
     },
+    recipeTitleAndDuration: {
+        flexGrow: 1
+    },
+    recipeTitle: {
+        margin: 0
+    },
+    recipeInfo: {
+        display: 'flex'
+    },
     recipeImage: {
         width: "100%"
     },
