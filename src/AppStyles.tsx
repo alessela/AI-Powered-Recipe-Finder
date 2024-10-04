@@ -5,7 +5,7 @@ const appStyles = createUseStyles({
         backgroundColor: '#F5F5F5',
         height: '100vh',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
     }
 })
 

@@ -10,7 +10,7 @@ const SearchResults = () => {
     const recipes = []
 
     for (let i = 0; i < 5; ++i) {
-        recipes.push(new Recipe(`recipe${i}`, 25, [], [], false));
+        recipes.push(new Recipe(`recipe${i}`, 25, [], []));
     }
 
     return (
@@ -23,7 +23,6 @@ const SearchResults = () => {
                                                      duration={recipe.duration}
                                                      ingredients={recipe.ingredients}
                                                      instructions={recipe.instructions}
-                                                     favorite={recipe.favorite}
                                         />))
             }
         </div>

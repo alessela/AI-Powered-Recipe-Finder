@@ -1,11 +1,12 @@
-import { Home } from "@mui/icons-material"
+
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import SearchResults from "../pages/SearchResults/SearchResults"
+import HomePage from "../pages/Home/HomePage";
 
 const AppRouter = () => (
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Home />}/>
+            <Route path="/" element={<HomePage />}/>
             <Route path="/search/:searched" element={<SearchResults />} />
           </Routes>
     </BrowserRouter>

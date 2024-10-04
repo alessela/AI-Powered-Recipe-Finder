@@ -5,14 +5,17 @@ import recipeCardStyles from "./RecipeCardStyles";
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useContext, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { addItem, removeItem } from "../../redux/slices/favoritesSlice";
 
 const RecipeCard = (recipe: Recipe) => {
     const styles = recipeCardStyles();
-    const [_recipe, setRecipe] = useState(recipe);
+    const dispatch = useAppDispatch();
+    const favorites = useAppSelector((state) => state.favoriteRecipes.items);
+    const isFavorite = favorites.some((item) => item.title === recipe.title)
 
-    const handleFavoriteChange = () => {
-        setRecipe({..._recipe, favorite: !_recipe.favorite});
+    const handleFavoriteClick = () => {
+        isFavorite ? dispatch(removeItem(recipe)) : dispatch(addItem(recipe));
     }
     
     return (
@@ -26,8 +29,8 @@ const RecipeCard = (recipe: Recipe) => {
                 <Typography variant="body2">{recipe.duration}</Typography>
             </CardContent>
             <CardActions>
-                <IconButton onClick={handleFavoriteChange}>
-                    { _recipe.favorite ? <FavoriteIcon /> : <FavoriteBorderIcon /> }
+                <IconButton onClick={handleFavoriteClick}>
+                    { isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon /> }
                 </IconButton>
             </CardActions>
         </Card>
