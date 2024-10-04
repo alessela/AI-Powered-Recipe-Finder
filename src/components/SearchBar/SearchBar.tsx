@@ -9,7 +9,7 @@ const SearchBar = ({ searched }: { searched: string }) => {
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
-            window.location.href=`search/${encodeURI(toSearch)}`
+            window.location.href=`/search/${encodeURI(toSearch)}`
         }
     }
 
@@ -25,7 +25,7 @@ const SearchBar = ({ searched }: { searched: string }) => {
                        onChange={(e) => setToSearch(e.target.value)}
                        onKeyDown={handleKeyDown}
                 />
-            <Link to={`search/${encodeURI(toSearch)}`}>
+            <Link to={`/search/${encodeURI(toSearch)}`}>
                 <IconButton className={styles.searchButton}>
                     <SearchIcon fontSize="large"/>
                 </IconButton>

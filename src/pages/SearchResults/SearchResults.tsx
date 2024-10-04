@@ -3,9 +3,18 @@ import searchResultsStyles from "./SearchResultsStyles";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Recipe from "../../components/Recipe/Recipe";
 import RecipeCard from "../../components/Recipe/RecipeCard";
+import generateResponse from "../../openai/generateResponse";
 
 const SearchResults = () => {
     const { searched } = useParams()
+    
+    generateResponse(searched!).then((response) => {
+        let generatedResponse = response.data.choices[0].message.content
+        console.log(generatedResponse)
+    }).catch((error) => {
+        console.log('Error calling OpenAI API', error)
+    })
+    
     const styles = searchResultsStyles()
     const recipes = []
 
