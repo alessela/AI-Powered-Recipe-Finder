@@ -3,35 +3,37 @@ import searchResultsStyles from "./SearchResultsStyles";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Recipe from "../../components/Recipe/Recipe";
 import RecipeCard from "../../components/Recipe/RecipeCard";
-import generateResponse from "../../openai/generateResponse";
+import generateRecipes from "../../openai/generateRecipes";
+import { useEffect, useState } from "react";
+import { OrbitProgress } from "react-loading-indicators";
 
 const SearchResults = () => {
     const { searched } = useParams()
-    
-    generateResponse(searched!).then((response) => {
-        let generatedResponse = response.data.choices[0].message.content
-        console.log(generatedResponse)
-    }).catch((error) => {
-        console.log('Error calling OpenAI API', error)
-    })
-    
     const styles = searchResultsStyles()
-    const recipes = []
+    const [recipes, setRecipes] = useState<Recipe[]>([])
+    const [loading, setLoading] = useState(false)
 
-    for (let i = 0; i < 5; ++i) {
-        recipes.push(new Recipe(`recipe${i}`, 25, [], []));
-    }
+    useEffect(() => {
+        const fetchRecipes = async () => {
+            setLoading(true)
+            await generateRecipes(searched!).then(setRecipes);
+            setLoading(false)
+        }
+
+        fetchRecipes()
+    }, [])
 
     return (
         <div className={styles.searchResultsScreen}>
             <SearchBar searched={searched!}/>
             <h1>Suggested recipes</h1>
             {
-                recipes.map((recipe) => (<RecipeCard key={recipe.title}
-                                                     title={recipe.title}
-                                                     duration={recipe.duration}
-                                                     ingredients={recipe.ingredients}
-                                                     instructions={recipe.instructions}
+                loading ? <OrbitProgress color="green" size="medium" />
+                : recipes.map((recipe) => (<RecipeCard key={recipe.title}
+                                                       title={recipe.title}
+                                                       duration={recipe.duration}
+                                                       ingredients={recipe.ingredients}
+                                                       instructions={recipe.instructions}
                                         />))
             }
         </div>

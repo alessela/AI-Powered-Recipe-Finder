@@ -25,7 +25,7 @@ const RecipeCard = (recipe: Recipe) => {
                 title="imag"
             />
             <CardContent className={styles.recipeCardContent}>
-                <Typography variant="h6">{recipe.title}</Typography>
+                <Typography variant="body2"><b>{recipe.title}</b></Typography>
                 <Typography variant="body2">{recipe.duration}</Typography>
             </CardContent>
             <CardActions>

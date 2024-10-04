@@ -4,6 +4,7 @@ const searchBarStyles = createUseStyles({
     searchBar: {
         marginTop: 80,
         position: 'relative',
+        maxWidth: 400,
     },
     searchInput: {
         width: '100%',

@@ -2,14 +2,13 @@ import { createUseStyles } from "react-jss";
 
 const recipeCardStyles = createUseStyles({
     recipeCard: {
-        width: 384,
-        height: 88,
+        maxWidth: 400,
         borderRadius: 20,
         backgroundColor: 'inherit',
         display: 'flex'
     },
     recipeCardContent: {
-        width: '100%'
+        flexGrow: 1
     },
     recipeImage: {
         width: 88,
